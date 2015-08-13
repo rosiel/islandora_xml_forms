@@ -182,6 +182,9 @@ Ext.formbuilder = (function() {
           }
           record.set('ajax', ajax);
         }
+        else {
+          record.set('ajax', undefined);
+        }
         var actions = {};
         var has_actions = false;
         if(values['actions_create'] == "on" && !form.findField('actions_create').disabled) {
