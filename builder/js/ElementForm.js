@@ -1028,6 +1028,22 @@ Ext.formbuilder.createElementForm = function () {
             }
           }, {
             xtype: 'textfield',
+            id: 'ajax-wrapper',
+            name: 'ajax_wrapper',
+            fieldLabel: Drupal.t('Wrapper'),
+            listeners: {
+              render: function() {
+                Ext.create('Ext.tip.ToolTip', {
+                  target: 'ajax-wrapper',
+                  anchor: 'left',
+                  html: Drupal.t('<h3><a name="ajax_wrapper" id="ajax_wrapper"></a>#ajax[\'wrapper\']</h3>' +
+                  '<p><strong>Description</strong>: This property defines the HTML id attribute of an element on the page which will be replaced by the html returned by the #ajax[\'path\'] or #ajax[\'callback\'] function. Usually, a div element is used as the wrapper, as it provides the most flexibility for placement of elements before, after, or inside of its HTML tags. This property is required for using AJAX requests in on a form element.  Note that the entire element with this ID is replaced, not just the contents of the element.</p>' +
+                  '<p><strong>Values</strong>: String containg a valid id attribute of an HTML element on the same page. This <em>must not</em> contain the \'#\' character that a selector would have.</p>')
+                });
+              }
+            }
+          }, {
+            xtype: 'textfield',
             id: 'ajax-effect',
             name: 'ajax_effect',
             fieldLabel: Drupal.t('Effect'),
@@ -1155,22 +1171,6 @@ Ext.formbuilder.createElementForm = function () {
                   '<p>Possible values</p>' +
                   '<li><ul>array(\'name\' => some_submit_or_button_name)</ul><ul>array(\'value\' => some_submit_or_button_value)</ul></li>' +
                   '<p>Note that if #tree == TRUE, #name encodes the parents of the element in it, as when used with form_set_error(), i.e. "level1][level2][element".</p>')
-                });
-              }
-            }
-          }, {
-            xtype: 'textfield',
-            id: 'ajax-wrapper',
-            name: 'ajax_wrapper',
-            fieldLabel: Drupal.t('Wrapper'),
-            listeners: {
-              render: function() {
-                Ext.create('Ext.tip.ToolTip', {
-                  target: 'ajax-wrapper',
-                  anchor: 'left',
-                  html: Drupal.t('<h3><a name="ajax_wrapper" id="ajax_wrapper"></a>#ajax[\'wrapper\']</h3>' +
-                  '<p><strong>Description</strong>: This property defines the HTML id attribute of an element on the page which will be replaced by the html returned by the #ajax[\'path\'] or #ajax[\'callback\'] function. Usually, a div element is used as the wrapper, as it provides the most flexibility for placement of elements before, after, or inside of its HTML tags. This property is required for using AJAX requests in on a form element.  Note that the entire element with this ID is replaced, not just the contents of the element.</p>' +
-                  '<p><strong>Values</strong>: String containg a valid id attribute of an HTML element on the same page. This <em>must not</em> contain the \'#\' character that a selector would have.</p>')
                 });
               }
             }
