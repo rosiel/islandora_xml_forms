@@ -126,10 +126,18 @@ Ext.formbuilder.createTreePanel = function() {
               ajax_method: ajax.method,
               ajax_path: ajax.path,
               ajax_prevent: ajax.prevent,
-              ajax_trigger_as: ajax.trigger_as,
               ajax_wrapper: ajax.wrapper,
               ajax_keypress: ajax.keypress
             };
+            if(ajax.trigger_as !== undefined && ajax.trigger_as != ""){
+              var trigger_as = ajax.trigger_as;
+              values.ajax_trigger_as = "on";
+              values.ajax_trigger_as_name = trigger_as.name;
+              values.ajax_trigger_as_value = trigger_as.value;
+            }
+            else {
+              Ext.getCmp('ajax_trigger_as').collapse();
+            }
             if(ajax.progress !== undefined && ajax.progress != "") {
               var progress = ajax.progress;
               values.ajax_progress = "on";
@@ -146,6 +154,7 @@ Ext.formbuilder.createTreePanel = function() {
           else {
             Ext.getCmp('ajax').collapse();
             Ext.getCmp('ajax_progress').collapse();
+            Ext.getCmp('ajax_trigger_as').collapse();
           }
           var actions = data.actions;
           if(actions !== undefined && actions != "") {

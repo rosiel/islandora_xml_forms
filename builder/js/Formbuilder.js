@@ -137,17 +137,48 @@ Ext.formbuilder = (function() {
             method: values['ajax_method'],
             path: values['ajax_path'],
             prevent: values['ajax_prevent'],
-            trigger_as: values['ajax_trigger_as'],
             wrapper: values['ajax_wrapper'],
             keypress: values['ajax_keypress']
           };
+          /* Delete empty properties. */
+          for (var value in ajax) {
+            if (ajax.hasOwnProperty(value)) {
+              if (!(ajax[value])) {
+                delete ajax[value];
+              }
+            }
+          }
           if(values['ajax_progress'] == "on") {
-            ajax.progress = {
+            progress = {
               type: values['ajax_progress_type'],
               message: values['ajax_progress_message'],
               url: values['ajax_progress_url'],
               interval: values['ajax_progress_interval']
             };
+            /* Delete empty properties. */
+            for (var value in progress) {
+              if (progress.hasOwnProperty(value)) {
+                if (!(progress[value])) {
+                  delete progress[value];
+                }
+              }
+            }
+            ajax.progress = progress;
+          }
+          if(values['ajax_trigger_as'] == "on") {
+            trigger_as = {
+              name: values['ajax_trigger_as_name'],
+              value: values['ajax_trigger_as_value']
+            };
+            /* Delete empty properties. */
+            for (var value in trigger_as) {
+              if (trigger_as.hasOwnProperty(value)) {
+                if (!(trigger_as[value])) {
+                  delete trigger_as[value];
+                }
+              }
+            }
+            ajax.trigger_as = trigger_as;
           }
           record.set('ajax', ajax);
         }

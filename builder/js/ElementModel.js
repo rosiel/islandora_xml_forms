@@ -83,6 +83,19 @@ Ext.data.Types.AJAX_PROGRESS = {
 /**
  *
  */
+Ext.data.Types.AJAX_TRIGGER_AS = {
+    type: 'AJAX_TRIGGER_AS',
+    fields: [{
+        name: 'name',
+        type: 'string'
+    }, {
+        name: 'value',
+        type: 'string'
+    }]
+}
+/**
+ *
+ */
 Ext.data.Types.AJAX = {
     type: 'AJAX',
     fields: [{
@@ -108,7 +121,7 @@ Ext.data.Types.AJAX = {
         type: 'string'
     }, {
         name: 'trigger_as',
-        type: 'string'
+        type: types.AJAX_TRIGGER_AS
     }, {
         name: 'wrapper',
         type: 'string'

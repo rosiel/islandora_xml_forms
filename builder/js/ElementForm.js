@@ -1156,24 +1156,51 @@ Ext.formbuilder.createElementForm = function () {
               }
             }
           }, {
-            xtype: 'textfield',
-            id: 'ajax-trigger-as',
-            name: 'ajax_trigger_as',
-            fieldLabel: Drupal.t('Trigger as'),
-            listeners: {
-              render: function() {
-                Ext.create('Ext.tip.ToolTip', {
-                  target: 'ajax-trigger-as',
-                  anchor: 'left',
-                  html: Drupal.t('<h3><a name="ajax_trigger_as" id="ajax_trigger_as"></a>#ajax[\'trigger_as\']</h3>' +
-                  '<p><strong>Description</strong>:  For a non-submit, non-button element, allows selection of the submit element which will be activated when the element is triggered. For example, if a select element is ajax-enabled, and it changes, an element identified by #ajax[\'trigger_as\'][\'name\'] or #ajax[\'trigger_as\'][\'value\'] will be used as the triggering element, especially for button-level validation.</p>' +
-                  '<p><strong>Values</strong>: Array.</p>' +
-                  '<p>Possible values</p>' +
-                  '<li><ul>array(\'name\' => some_submit_or_button_name)</ul><ul>array(\'value\' => some_submit_or_button_value)</ul></li>' +
-                  '<p>Note that if #tree == TRUE, #name encodes the parents of the element in it, as when used with form_set_error(), i.e. "level1][level2][element".</p>')
-                });
+            xtype:'fieldset',
+            checkboxToggle: true,
+            collapsed: true,
+            checkboxName: 'ajax_trigger_as',
+            id: 'ajax_trigger_as',
+            title: Drupal.t('Trigger as'),
+            items: [{
+              xtype: 'textfield',
+              id: 'ajax-trigger-as-name',
+              name: 'ajax_trigger_as_name',
+              fieldLabel: Drupal.t('Trigger as (element name)'),
+              listeners: {
+                render: function () {
+                  Ext.create('Ext.tip.ToolTip', {
+                    target: 'ajax-trigger-as-name',
+                    anchor: 'left',
+                    html: Drupal.t('<h3><a name="ajax_trigger_as" id="ajax_trigger_as"></a>#ajax[\'trigger_as\']</h3>' +
+                    '<p><strong>Description</strong>:  For a non-submit, non-button element, allows selection of the submit element which will be activated when the element is triggered. For example, if a select element is ajax-enabled, and it changes, an element identified by #ajax[\'trigger_as\'][\'name\'] or #ajax[\'trigger_as\'][\'value\'] will be used as the triggering element, especially for button-level validation.</p>' +
+                    '<p><strong>Values</strong>: Array.</p>' +
+                    '<p>Possible values</p>' +
+                    '<li><ul>array(\'name\' => some_submit_or_button_name)</ul><ul>array(\'value\' => some_submit_or_button_value)</ul></li>' +
+                    '<p>Note that if #tree == TRUE, #name encodes the parents of the element in it, as when used with form_set_error(), i.e. "level1][level2][element".</p>')
+                  });
+                }
               }
-            }
+            }, {
+              xtype: 'textfield',
+              id: 'ajax-trigger-as-value',
+              name: 'ajax_trigger_as_value',
+              fieldLabel: Drupal.t('Trigger as (element value)'),
+              listeners: {
+                render: function() {
+                  Ext.create('Ext.tip.ToolTip', {
+                    target: 'ajax-trigger-as-value',
+                    anchor: 'left',
+                    html: Drupal.t('<h3><a name="ajax_trigger_as" id="ajax_trigger_as"></a>#ajax[\'trigger_as\']</h3>' +
+                    '<p><strong>Description</strong>:  For a non-submit, non-button element, allows selection of the submit element which will be activated when the element is triggered. For example, if a select element is ajax-enabled, and it changes, an element identified by #ajax[\'trigger_as\'][\'name\'] or #ajax[\'trigger_as\'][\'value\'] will be used as the triggering element, especially for button-level validation.</p>' +
+                    '<p><strong>Values</strong>: Array.</p>' +
+                    '<p>Possible values</p>' +
+                    '<li><ul>array(\'name\' => some_submit_or_button_name)</ul><ul>array(\'value\' => some_submit_or_button_value)</ul></li>' +
+                    '<p>Note that if #tree == TRUE, #name encodes the parents of the element in it, as when used with form_set_error(), i.e. "level1][level2][element".</p>')
+                  });
+                }
+              }
+            }]
           }, {
             xtype:'fieldset',
             checkboxToggle: true,
