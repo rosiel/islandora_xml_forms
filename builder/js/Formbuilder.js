@@ -81,6 +81,16 @@ Ext.formbuilder = (function() {
       }
       Ext.getCmp('namespaces').store.loadData(namespaces, false);
     },
+    deleteEmptyProperties: function(d) {
+      for (var value in d) {
+        if (d.hasOwnProperty(value)) {
+          if (!(d[value])) {
+            delete d[value];
+          }
+        }
+      }
+      return d;
+    },
     saveElementForm: function() {
       var form = this.elementForm.getForm();
       if (form.isValid()) {
@@ -141,13 +151,7 @@ Ext.formbuilder = (function() {
             keypress: values['ajax_keypress']
           };
           /* Delete empty properties. */
-          for (var value in ajax) {
-            if (ajax.hasOwnProperty(value)) {
-              if (!(ajax[value])) {
-                delete ajax[value];
-              }
-            }
-          }
+          ajax = this.deleteEmptyProperties(ajax);
           if(values['ajax_progress'] == "on") {
             progress = {
               type: values['ajax_progress_type'],
@@ -156,14 +160,7 @@ Ext.formbuilder = (function() {
               interval: values['ajax_progress_interval']
             };
             /* Delete empty properties. */
-            for (var value in progress) {
-              if (progress.hasOwnProperty(value)) {
-                if (!(progress[value])) {
-                  delete progress[value];
-                }
-              }
-            }
-            ajax.progress = progress;
+            ajax.progress = this.deleteEmptyProperties(progress);
           }
           if(values['ajax_trigger_as'] == "on") {
             trigger_as = {
@@ -171,14 +168,7 @@ Ext.formbuilder = (function() {
               value: values['ajax_trigger_as_value']
             };
             /* Delete empty properties. */
-            for (var value in trigger_as) {
-              if (trigger_as.hasOwnProperty(value)) {
-                if (!(trigger_as[value])) {
-                  delete trigger_as[value];
-                }
-              }
-            }
-            ajax.trigger_as = trigger_as;
+            ajax.trigger_as = this.deleteEmptyProperties(trigger_as);
           }
           record.set('ajax', ajax);
         }
